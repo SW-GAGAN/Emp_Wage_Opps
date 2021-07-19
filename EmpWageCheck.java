@@ -97,8 +97,38 @@ public class EmpWageCheck {
         int totalEmpWage = totalEmpHrs * empRatePerHrs;
         System.out.println("total Emp Wage" + " " + totalEmpWage);
 
+    }
+    public class empWageBuilderMultipleCompany{
+        public static final int isPartTime=1;
+        public static final int isFullTime=2;
+        final int empRatePerHrs = 20;
+        final int noOfWorkingDays = 20;
+        final int maxHrInMonth = 10;
 
-
+        public int computeEmpWage(String company , int emprRatePerHr, int numOfWorkingDays
+                ,int maxHrInMonth) {
+            int Emphrs = 0;
+            int totalEmpHrs = 0;
+            int totalWorkingDays = 0;
+            while (totalEmpHrs <= maxHrInMonth && totalWorkingDays <= noOfWorkingDays) {
+                int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+                switch (empCheck) {
+                    case isPartTime:
+                        Emphrs = 4;
+                        break;
+                    case isFullTime:
+                        Emphrs = 8;
+                        break;
+                    default:
+                        Emphrs = 0;
+                }
+                totalEmpHrs += Emphrs;
+                System.out.println(totalWorkingDays + "Emphrs: " + Emphrs);
+            }
+            int totalEmpWage = totalEmpHrs * empRatePerHrs;
+            System.out.println("Total emp wages for compony" + company + "is" + totalEmpWage );
+            return totalEmpWage;
+        }
 
     }
 
@@ -106,12 +136,20 @@ public class EmpWageCheck {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         // To creating a object and call the method
-        EmpWageCheck ewc = new EmpWageCheck ();
+        EmpWageCheck ewc = new EmpWageCheck();
         ewc.welcomeMsg();
-        EmpWageCheck ewc1=new EmpWageCheck ();
+        EmpWageCheck ewc1=new EmpWageCheck();
         ewc1.empWage();
-        EmpWageCheck ewc2=new EmpWageCheck();
+        EmpWageCheck ewc2=new EmpWageCheck ();
         ewc2.totalWorkingHrsOrDay();
+        computeEmpWage("Dmart",2,10);
+        computeEmpWage("Relaince",2,10);
+
+
+
+    }
+    private static void computeEmpWage(String string, int i, int j) {
+        // TODO Auto-generated method stub
 
     }
 
